@@ -1,4 +1,4 @@
-package com.zefyr.example
+package com.example.android
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
