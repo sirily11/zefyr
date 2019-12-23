@@ -72,23 +72,24 @@ class ZefyrThemeData {
       fontSize: 16.0,
       height: 1.25,
       fontWeight: FontWeight.normal,
-      color: Colors.grey.shade800,
+      // color: Colors.grey.shade800,
     );
     final padding = const EdgeInsets.only(bottom: 16.0);
     final boldStyle = TextStyle(fontWeight: FontWeight.bold);
     final italicStyle = TextStyle(fontStyle: FontStyle.italic);
-    final linkStyle =
-        TextStyle(color: Colors.blue, decoration: TextDecoration.underline);
+    final linkStyle = TextStyle(
+        color: Theme.of(context).highlightColor,
+        decoration: TextDecoration.underline);
 
     return ZefyrThemeData(
       boldStyle: boldStyle,
       italicStyle: italicStyle,
       linkStyle: linkStyle,
       paragraphTheme: StyleTheme(textStyle: paragraphStyle, padding: padding),
-      headingTheme: HeadingTheme.fallback(),
+      headingTheme: HeadingTheme.fallback(context),
       blockTheme: BlockTheme.fallback(themeData),
       selectionColor: Colors.lightBlueAccent.shade100,
-      cursorColor: Colors.black,
+      cursorColor: Theme.of(context).cursorColor,
       indentSize: 16.0,
       toolbarTheme: ZefyrToolbarTheme.fallback(context),
     );
@@ -168,33 +169,18 @@ class HeadingTheme {
   });
 
   /// Creates fallback theme for headings.
-  factory HeadingTheme.fallback() {
+  factory HeadingTheme.fallback(BuildContext context) {
     return HeadingTheme(
       level1: StyleTheme(
-        textStyle: TextStyle(
-          fontSize: 30.0,
-          // color: Colors.grey.shade800,
-          height: 1.25,
-          fontWeight: FontWeight.w600,
-        ),
+        textStyle: Theme.of(context).textTheme.title.copyWith(fontSize: 30),
         padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
       ),
       level2: StyleTheme(
-        textStyle: TextStyle(
-          fontSize: 24.0,
-          // color: Colors.grey.shade800,
-          height: 1.25,
-          fontWeight: FontWeight.w600,
-        ),
+        textStyle: Theme.of(context).textTheme.subtitle.copyWith(fontSize: 24),
         padding: EdgeInsets.only(bottom: 8.0, top: 8.0),
       ),
       level3: StyleTheme(
-        textStyle: TextStyle(
-          fontSize: 20.0,
-          // color: Colors.grey.shade800,
-          height: 1.25,
-          fontWeight: FontWeight.w600,
-        ),
+        textStyle: Theme.of(context).textTheme.subtitle.copyWith(fontSize: 20),
         padding: EdgeInsets.only(bottom: 8.0, top: 8.0),
       ),
     );
@@ -241,7 +227,7 @@ class BlockTheme {
       bulletList: StyleTheme(padding: padding),
       numberList: StyleTheme(padding: padding),
       quote: StyleTheme(
-        textStyle: TextStyle(color: Colors.grey.shade700),
+        // textStyle: TextStyle(color: Colors.grey.shade700),
         padding: padding,
       ),
       code: StyleTheme(

@@ -10,14 +10,30 @@ void main() {
   runApp(ZefyrApp());
 }
 
-class ZefyrApp extends StatelessWidget {
+class ZefyrApp extends StatefulWidget {
+  @override
+  _ZefyrAppState createState() => _ZefyrAppState();
+}
+
+class _ZefyrAppState extends State<ZefyrApp> {
+  bool isDarkMode = false;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Zefyr Editor',
       theme: ThemeData(primarySwatch: Colors.cyan),
-      home: HomePage(),
+      darkTheme: ThemeData.dark(),
+      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      home: HomePage(
+        isDarkMode: isDarkMode,
+        toggleDarkMode: (v) {
+          setState(() {
+            isDarkMode = v;
+          });
+        },
+      ),
       routes: {
         "/fullPage": buildFullPage,
         "/form": buildFormPage,
@@ -40,15 +56,27 @@ class ZefyrApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  final bool isDarkMode;
+  final Function toggleDarkMode;
+
+  HomePage({this.isDarkMode, this.toggleDarkMode});
+
   @override
   Widget build(BuildContext context) {
     final nav = Navigator.of(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 1.0,
-        backgroundColor: Colors.grey.shade200,
         brightness: Brightness.light,
         title: ZefyrLogo(),
+        actions: <Widget>[
+          Switch(
+            value: isDarkMode,
+            onChanged: (value) {
+              toggleDarkMode(value);
+            },
+          )
+        ],
       ),
       body: Column(
         children: <Widget>[

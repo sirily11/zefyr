@@ -81,8 +81,6 @@ class _FullPageEditorScreenState extends State<FullPageEditorScreen> {
       resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         elevation: 1.0,
-        backgroundColor: Colors.grey.shade200,
-        brightness: Brightness.light,
         title: ZefyrLogo(),
         actions: done,
       ),
