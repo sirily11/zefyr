@@ -173,7 +173,7 @@ class HeadingTheme {
       level1: StyleTheme(
         textStyle: TextStyle(
           fontSize: 30.0,
-          color: Colors.grey.shade800,
+          // color: Colors.grey.shade800,
           height: 1.25,
           fontWeight: FontWeight.w600,
         ),
@@ -182,7 +182,7 @@ class HeadingTheme {
       level2: StyleTheme(
         textStyle: TextStyle(
           fontSize: 24.0,
-          color: Colors.grey.shade800,
+          // color: Colors.grey.shade800,
           height: 1.25,
           fontWeight: FontWeight.w600,
         ),
@@ -191,7 +191,7 @@ class HeadingTheme {
       level3: StyleTheme(
         textStyle: TextStyle(
           fontSize: 20.0,
-          color: Colors.grey.shade800,
+          // color: Colors.grey.shade800,
           height: 1.25,
           fontWeight: FontWeight.w600,
         ),
@@ -231,6 +231,7 @@ class BlockTheme {
         fontFamily = 'Menlo';
         break;
       case TargetPlatform.android:
+      case TargetPlatform.macOS:
       case TargetPlatform.fuchsia:
         fontFamily = 'Roboto Mono';
         break;
